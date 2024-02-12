@@ -1,4 +1,6 @@
 package com.pv.lowlevaldesign.TicTacToe.model;
 
-public class PieceType {
+public enum PieceType {
+    O,
+    X;
 }
