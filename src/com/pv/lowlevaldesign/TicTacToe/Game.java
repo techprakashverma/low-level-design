@@ -17,11 +17,11 @@ public class Game {
 
         //creating 2 Players
         players = new LinkedList<>();
-        PlayingPieceX crossPiece = new PlayingPieceX();
-        Player player1 = new Player("Player1", crossPiece);
+        PlayingPieceX pieceX = new PlayingPieceX();
+        Player player1 = new Player("Player1", pieceX);
 
-        PlayingPieceO noughtsPiece = new PlayingPieceO();
-        Player player2 = new Player("Player2", noughtsPiece);
+        PlayingPieceO piece0 = new PlayingPieceO();
+        Player player2 = new Player("Player2", piece0);
 
         players.add(player1);
         players.add(player2);
@@ -38,8 +38,10 @@ public class Game {
             //take out the player whose turn is and also put the player in the list back
             Player playerTurn = players.removeFirst();
 
-            //get the free space from the board
+            //print the board
             gameBoard.printBoard();
+
+            //get the free space from the board
             List<Pair<Integer, Integer>> freeSpaces =  gameBoard.getFreeCells();
             if(freeSpaces.isEmpty()) {
                 noWinner = false;
@@ -65,6 +67,7 @@ public class Game {
             }
             players.addLast(playerTurn);
 
+            //check winner
             boolean winner = isThereWinner(inputRow, inputColumn, playerTurn.playingPiece.pieceType);
             if(winner) {
                 return playerTurn.name;
